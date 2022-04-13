@@ -7,7 +7,19 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// Default response for any other request (Not Found)
+// Connect to database
+const db = mysql.createConnection({
+        host: 'localhost',
+        // MySQL username
+        user: vang007,
+        // MYSQl password
+        password: Zuzu2020$,
+        database: 'election'
+    },
+    console.log('Connected to the election database.')
+);
+
+// Default response for any other request (Not Found) aka *catchall route*
 app.use((req, res) => {
     res.status(404).end();
 });
